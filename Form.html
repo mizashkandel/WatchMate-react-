@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Forms</title>
+</head>
+<body>
+    <form>
+        <label>Full Name</label>
+        <input type="text" name="full_name" placeholder="Enter your Full Name" required><br>
+        <label>Gender</label><br>
+        <select name="Gender" required>
+            <option disabled selected value="">Select your Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select><br>
+        <label>About Yourself</label><br>
+        <textarea name="Your_info" placeholder="Write short introduction" rows="3"></textarea><br>
+        <label>Interested Courses</label><br>
+        <input type="checkbox" name="html"> Html
+        <input type="checkbox" name="css"> Css
+        <input type="checkbox" name="javascript">Javascript <br>
+        <label> Select Timing</label><br>
+        <input type="radio" name="Time"> Morning <br>
+        <input type="radio" name="Time"> Day <br>
+        <input type="radio" name="Time"> Evening <br>
+        <label>Upload Photo</label><br>
+        <input type="file" name="photo"><br>
+        <label>Enter password</label><br>
+        <input type="password" name="password"><br><br>
+        <button type="button">Button</button>
+        <button type="reset">Reset</button>
+        <button type="submit"> Submit</button>
+
+    </form>
+</body>
+</html>
