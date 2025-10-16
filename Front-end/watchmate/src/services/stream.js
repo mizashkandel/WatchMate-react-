@@ -1,61 +1,61 @@
 import{API_BASE_URL} from "../commons/api"
 
-export const listMovies =  async() => {
+export const listStream =  async() => {
     try{
-        const response = await fetch(API_BASE_URL+"/list");
+        const response = await fetch(API_BASE_URL+"/stream/");
         if (!response.ok){
             throw new Error(`Response status : ${response.status}`);
         }
     
-        const movies = await response.json();
-        return movies
+        const stream = await response.json();
+        return stream
     }catch (error){
         console.error
     }
 }
 
-  export const createMovie = async (MovieData) =>{
+  export const createStream = async (StreamData) =>{
     try{
-        const response = await fetch(API_BASE_URL + '/list/',{
+        const response = await fetch(API_BASE_URL + '/stream/',{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(MovieData),
+            body: JSON.stringify(StreamData),
         });
         if(!response.ok){
             throw new Error(`Response status: ${response.status}`);
 
         }
-        const movie = await response.json();
-        return movie
+        const stream = await response.json();
+        return stream
     } catch (error) {
         console.error(error.message)
     }
 }
 
-    export const updateMovie = async (movieID, MovieData) =>{
+    export const updateStream = async (StreamID, StreamData) =>{
         try{
-        const response = await fetch(API_BASE_URL + `/${movieID}/`,{
+        const response = await fetch(API_BASE_URL + `/${streamID}/`,{
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(MovieData),
+            body: JSON.stringify(StreamData),
         });
         if(!response.ok){
             throw new Error(`Response status: ${response.status}`);
         }
-        const movie = await response.json();
-        return movie
+        const stream = await response.json();
+        return stream
     } catch (error) {
         console.error(error.message)
     }
 }
 
-export const deleteMovie = async (movieID) =>{
+export const deleteMovie = async (streamID) =>{
 try{
-const response = await fetch(API_BASE_URL + `/${movieID}/`,{
+const response = await fetch(API_BASE_URL + `/${streamID}/`,{
     method: "DELETE",
     headers: {
         "Content-Type": "application/json"

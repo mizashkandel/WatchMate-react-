@@ -1,14 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import { createMovie }from '../../services/movie'
+import { createMovie, updateMovie }from '../../services/movie'
 
 function MovieModal(props) {
-    const{show, selectedMovie,handleClose,handleShow} = props
+  const{show, selectedMovie,handleClose,handleShow,setRefresh,setSelectedMovie} = props
 
-    console.log(selectedMovie, "esso movie ko data")
-  const [formData, setFormData] = useState({title: "",story: ""})
+  const [formData, setFormData] = useState({title: "",storyline: ""})
   const handleChange = (e) => {
     const {name , value} = e.target;
     setFormData((prev)=>{
@@ -19,20 +18,24 @@ function MovieModal(props) {
   }
   const handleSubmit = async() => {
     if (selectedMovie) {
-      await  updateMovie(selectedMovie.id, )
+      await updateMovie(selectedMovie.id, formData)
+      setSelectedMovie(null)
     }
     else {
     await createMovie(formData);
   }
   handleClose();
-  setRefresh((prev) = !prev);
+  setRefresh((prev) => !prev);
 }
-
-
-
+useEffect(()=>{
+if (selectedMovie)
+{
+  setFormData({title:selectedMovie.title,storyline:selectedMovie.storyline})
+}
+},[selectedMovie])
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="success" onClick={handleShow}>
         Add Movie
       </Button>
 
@@ -61,7 +64,7 @@ function MovieModal(props) {
               as="textarea" 
               rows={3} 
               onChange={handleChange} 
-              name='story'
+              name='storyline'
               defaultValue={selectedMovie?.storyline}/>
             </Form.Group>
           </Form>
