@@ -15,7 +15,7 @@ function App() {
     <>
     <NavbarComponent/>
     <Routes>
-      <Route path = '/' element={<HomePage />}/>
+      <Route path = '/home' element={<HomePage />}/>
       <Route path ='/login' element={<Userlogin />}/>
       
       {/* <Route path = '/stream' element={<StreamPage />}/> */}
